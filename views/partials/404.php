@@ -1,7 +1,6 @@
-<?php require ('head.php'); ?>
+<?php require('head.php'); ?>
 
-<?php require ('nav.php'); ?>
-
+<?php require('nav.php'); ?>
 
 
     <main class="bg-gray-100 py-8">
@@ -16,6 +15,4 @@
     </main>
 
 
-
-
-<?php require ('foot.php'); ?>
+<?php require('foot.php'); ?>

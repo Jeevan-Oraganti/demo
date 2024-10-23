@@ -2,16 +2,16 @@
 
 require 'functions.php';
 //require 'router.php';
+require 'Database.php';
 
-//connect to PostgreSQL Database.
-$dsn = "pgsql:host=localhost;port=5432;dbname=postgres;user=postgres;password=password";
+$config = require('config.php');
 
-$pdo = new PDO($dsn);
+$db = new Database($config['database']);
 
-$statement = $pdo->prepare("select * from posts");
+$id    = $_GET['id'];
+$query = "select * from posts where id = :id";
 
-$statement->execute();
 
-$posts = $statement->fetchAll();
+$posts = $db->query($query, ['id' => $id])->fetch();
 
 dd($posts);
