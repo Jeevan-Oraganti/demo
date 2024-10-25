@@ -1,8 +1,8 @@
-<?php require('partials/head.php'); ?>
+<?php require base_path('views/partials/head.php'); ?>
 
-<?php require('partials/nav.php'); ?>
+<?php require base_path('views/partials/nav.php'); ?>
 
-<?php require('partials/banner.php'); ?>
+<?php require base_path('views/partials/banner.php'); ?>
 
 
     <main class="bg-gray-100 py-8">
@@ -11,8 +11,10 @@
                 <a href="/notes" class="text-blue-500 underline">go back..</a>
             </p>
             <p><?= htmlspecialchars($note['body']) ?></p>
+
+            <a href="">Delete</a>
         </div>
     </main>
 
 
-<?php require('partials/foot.php'); ?>
+<?php require base_path('views/partials/foot.php'); ?>

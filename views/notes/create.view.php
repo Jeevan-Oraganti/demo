@@ -1,9 +1,8 @@
-<?php require('partials/head.php'); ?>
+<?php require base_path('views/partials/head.php'); ?>
 
-<?php require('partials/nav.php'); ?>
+<?php require base_path('views/partials/nav.php'); ?>
 
-<?php require('partials/banner.php'); ?>
-
+<?php require base_path('views/partials/banner.php'); ?>
 
     <main class="bg-gray-100 py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white shadow-md rounded-lg p-6">
@@ -26,7 +25,7 @@
                 </div>
 
                 <div class="mt-6 flex items-center justify-end">
-                    <button type="button" class="mr-6 text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                    <button type="button" onclick="window.location.href='/notes'" class="mr-6 text-sm font-semibold leading-6 text-gray-900">Cancel</button>
                     <button type="submit"
                             class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                         Save
@@ -37,4 +36,4 @@
     </main>
 
 
-<?php require('partials/foot.php'); ?>
+<?php require base_path('views/partials/foot.php'); ?>
