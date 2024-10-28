@@ -8,17 +8,18 @@ class Container
 {
     protected $bindings = [];
 
-    public function bind($key, $value)
+    public function bind($key, $resolver)
     {
-        $this->bindings[$key] = $value;
+        $this->bindings[$key] = $resolver;
     }
 
     public function resolve($key)
     {
-        if (isset($this->bindings[$key])) {
-            return $this->bindings[$key];
+        if (! array_key_exists($key, $this->bindings)) {
+            throw new Exception("{$key} is not bound in the container");
         }
 
-        throw new Exception("No binding found for key: {$key}");
+        $resolver = $this->bindings[$key];
+        return call_user_func($resolver);
     }
 }
