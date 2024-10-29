@@ -4,16 +4,17 @@
 
 <?php require('partials/banner.php'); ?>
 
+<?
+$userEmail = $_SESSION['user']['email'] ?? 'Guest';
+?>
 
-    <main class="bg-gray-100 py-8">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div class="bg-white shadow-md rounded-lg p-6">
-                <h2 class="text-2xl font-semibold text-gray-800">Hello, User!</h2>
-                <p class="mt-4 text-gray-600">Welcome to the home page. Here you can find all your necessary tools and
-                    resources.</p>
-            </div>
+<main class="bg-gray-100 py-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <p>Hello, <?= htmlspecialchars($userEmail); ?></p>
         </div>
-    </main>
+    </div>
+</main>
 
 
 <?php require('partials/foot.php'); ?>

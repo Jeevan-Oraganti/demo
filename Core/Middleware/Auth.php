@@ -7,7 +7,7 @@ class Auth
     public function handle()
     {
         if (empty($_SESSION['user'])) {
-            header('Location: /');
+            header('location: /');
             exit;
         }
     }

@@ -28,8 +28,9 @@
                     </div>
                     <div class="mt-2">
                         <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        <div class="mt-2 text-sm">
-                            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                        <div class="flex items-center mt-2">
+                            <input type="checkbox" id="showPassword" class="mr-2" onclick="togglePassword()">
+                            <label for="showPassword" class="text-sm font-medium text-gray-600">Show Password</label>
                         </div>
                     </div>
                     <?php if (isset($errors['password'])) : ?>
@@ -47,6 +48,14 @@
     </div>
 
 </main>
+
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const showPasswordCheckbox = document.getElementById('showPassword');
+        passwordInput.type = showPasswordCheckbox.checked ? 'text' : 'password';
+    }
+</script>
 
 
 <?php require base_path('views/partials/foot.php'); ?>

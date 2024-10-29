@@ -8,7 +8,7 @@ use Core\Database;
 
 $db = App::resolve(Database::class);
 
-$currentUserId = 1;
+$currentUserId = $_SESSION['user_id'] ?? null;
 
 
 $note = $db->query('select * from notes where id = :id', [
