@@ -1,48 +1,25 @@
 <?php
 
-use Core\App;
-use Core\Database;
-use Core\Validator;
+use Core\Authenticator;
+use Core\Session;
+use Http\Forms\LoginForm;
 
-$db = App::resolve(Database::class);
-
-$email = trim($_POST['email']);
+$email = $_POST['email'];
 $password = $_POST['password'];
 
-$errors = [];
+$form = new LoginForm();
 
-if (!Validator::email($email)) {
-    $errors['email'] = 'Please enter a valid email';
-}
-
-if (!Validator::string($password)) {
-    $errors['password'] = 'Please enter a valid password';
-}
-
-if (!empty($errors)) {
-    return view('session/login.view.php', [
-        'errors' => $errors
-    ]);
-}
-
-$user = $db->query('SELECT * FROM users WHERE email = :email', [
-    'email' => $email
-])->find();
-
-if ($user) {
-    if (password_verify($password, $user['password'])) {
-        login([
-            'email' => $email,
-        ]);
-        header('Location: /');
-        exit();
-    } else {
-        $errors['password'] = 'Incorrect password.';
+if ($form->validate($email, $password)) {
+    if ((new Authenticator)->attempt($email, $password)) {
+        redirect('/');
     }
-} else {
-    $errors['email'] = 'No user found with that email.';
+
+    $form->errors()['email'] = 'No user found with this email and password combination.';
 }
 
-return view('session/login.view.php', [
-    'errors' => $errors
+Session::flash('errors', $form->errors());
+Session::flash('old', [
+    'email' => $_POST['email']
 ]);
+
+return redirect('/login');

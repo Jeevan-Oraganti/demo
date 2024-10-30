@@ -15,16 +15,16 @@ class Authenticator
                 $this->login([
                     'email' => $email,
                 ]);
-
                 return true;
             } else {
-                $errors['password'] = 'Incorrect password.';
+                Session::flash('errors', ['password' => 'Incorrect password.']);
             }
         } else {
-            $errors['email'] = 'No user found with that email.';
+            Session::flash('errors', ['email' => 'No user found with that email.']);
         }
         return false;
     }
+
 
     public function login($user)
     {
@@ -38,11 +38,6 @@ class Authenticator
     public function logout()
     {
 
-        $_SESSION = [];
-        session_destroy();
-
-
-        $params = session_get_cookie_params();
-        setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+        Session::destroy();
     }
 }

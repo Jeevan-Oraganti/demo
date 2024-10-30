@@ -1,5 +1,9 @@
 <?php
 
+function login($user) {
+    $_SESSION['user_id'] = $user['id'];
+}
+
 
 use Core\App;
 use Core\Database;
