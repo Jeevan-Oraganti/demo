@@ -4,14 +4,14 @@
 
 <?php require('partials/banner.php'); ?>
 
-<?
+<?php
 $userEmail = $_SESSION['user']['email'] ?? 'Guest';
 ?>
 
 <main class="bg-gray-100 py-8">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="bg-white shadow-md rounded-lg p-6">
-            <p>Hello, <?= htmlspecialchars($userEmail); ?></p>
+            <p>Hello <?= htmlspecialchars($userEmail); ?>, Welcome to the home page.</p>
         </div>
     </div>
 </main>
